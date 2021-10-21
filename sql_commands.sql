@@ -34,11 +34,6 @@ create table shoppingexpense (
     -- foreign key (orderID) references orders(orderID)
 );
 
-select orders.ordernumber,clients.clientname, shoppinglist.clientorder,shoppingexpense.price,shoppinglist.clientquantity,shoppingexpense.subtotal
-from orders
-inner join clients on orders.clientid = clients.clientid
-inner join shoppingexpense on shoppingexpense.ordernumber = orders.ordernumber
-inner join shoppinglist on shoppinglist.itemID = shoppingexpense.itemID;
 
 create table vendors (
     vendorID serial,
@@ -92,6 +87,14 @@ select * from vendorinventory;
 select orders.ordernumber, clients.clientName, orders.totalexpenses
 from orders
 inner join clients on orders.clientID = clients.clientID
+
+-- view subtotals
+select orders.ordernumber,clients.clientname, shoppinglist.clientorder,shoppingexpense.price,shoppinglist.clientquantity,shoppingexpense.subtotal
+from orders
+inner join clients on orders.clientid = clients.clientid
+inner join shoppingexpense on shoppingexpense.ordernumber = orders.ordernumber
+inner join shoppinglist on shoppinglist.itemID = shoppingexpense.itemID
+order by ordernumber asc;
 
 --view vendors
 select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost
