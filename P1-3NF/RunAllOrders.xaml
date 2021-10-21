@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="RunAllOrders" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="860,3968" sap2010:WorkflowViewState.IdRef="RunAllOrders_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="RunAllOrders" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="860,6421.33333333333" sap2010:WorkflowViewState.IdRef="RunAllOrders_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="28">
+    <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -29,6 +29,8 @@
       <x:String>UiPath.Database.Activities</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -61,7 +63,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RunAllOrders" sap:VirtualizedContainerService.HintSize="852,3903.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RunAllOrders" sap:VirtualizedContainerService.HintSize="852,6356.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="shoppinglistDT" />
       <Variable x:TypeArguments="sd:DataTable" Name="clientsDT" />
@@ -84,6 +86,11 @@
       <Variable x:TypeArguments="x:Int32" Name="clientID" />
       <Variable x:TypeArguments="x:Int32" Name="itemID" />
       <Variable x:TypeArguments="x:String" Name="testString3" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt1" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="ListA" />
+      <Variable x:TypeArguments="x:String" Name="testString4" />
+      <Variable x:TypeArguments="x:String" Name="testString5" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -134,6 +141,7 @@
       </ui:FilterDataTable.Filters>
       <ui:FilterDataTable.SelectColumns>
         <scg:List x:TypeArguments="InArgument" Capacity="8">
+          <InArgument x:TypeArguments="x:String">["ordernumber"]</InArgument>
           <InArgument x:TypeArguments="x:String">["clientid"]</InArgument>
           <InArgument x:TypeArguments="x:String">["itemid"]</InArgument>
           <InArgument x:TypeArguments="x:String">["clientname"]</InArgument>
@@ -143,8 +151,30 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:OutputDataTable DataTable="[csDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[testString]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Output composite clients table" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[testString]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="810,192.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:OutputDataTable DataTable="[csDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[testString]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="810,229.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,150.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Output composite clients table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[testString]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[viDT]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="810,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" ProviderName="System.Data.Odbc" Sql="Select * from vendorinventory" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
@@ -196,8 +226,30 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:OutputDataTable DataTable="[vcsDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[testString2]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Output composite vendors table" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[testString2]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="810,192.666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:OutputDataTable DataTable="[vcsDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[testString2]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="810,229.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,150.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Output composite vendors table" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[testString2]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="810,97.3333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -212,14 +264,14 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:BuildDataTable DataTable="[outputDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;orderid&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;itemid&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;price&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;subtotal&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vcsDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="810,1893.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:BuildDataTable DataTable="[outputDT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ordernumber&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;clientid&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;itemid&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;price&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;subtotal&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[vcsDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="810,1924" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="759.333333333333,1740.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="759.333333333333,1771.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -263,19 +315,22 @@
                 <InArgument x:TypeArguments="x:Int32">0</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[csDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="717.333333333333,1276.66666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[csDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="717.333333333333,1307.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="666.666666666667,1124" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="666.666666666667,1154.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Int32" Name="orderNumber" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="624.666666666667,250.666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="624.666666666667,281.333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -326,6 +381,14 @@
                               <InArgument x:TypeArguments="x:Int32">[cint(csDT.rows(Y).item("itemid"))]</InArgument>
                             </ui:AssignOperation.Value>
                           </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Int32">[orderNumber]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Int32">[cint(csDT.rows(Y).item("ordernumber"))]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
                         </scg:List>
                       </ui:MultipleAssign.AssignOperations>
                     </ui:MultipleAssign>
@@ -357,7 +420,7 @@
                               <InArgument x:TypeArguments="x:Double">[clientQuantity * vendorCost]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{CInt(clientID),CInt(itemID),CDbl(vendorCost),cdbl(subtotal)}]" DataTable="[outputDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="436.666666666667,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{cint(orderNumber),CInt(clientID),CInt(itemID),CDbl(vendorCost),cdbl(subtotal)}]" DataTable="[outputDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="436.666666666667,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                         </Sequence>
                       </If.Then>
                     </If>
@@ -377,8 +440,140 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
+    <ui:FilterDataTable DataTable="[outputDT]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[outputDT]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable.Filters>
+        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+        </scg:List>
+      </ui:FilterDataTable.Filters>
+      <ui:FilterDataTable.SelectColumns>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <InArgument x:TypeArguments="x:String">["ordernumber"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["itemid"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["price"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["subtotal"]</InArgument>
+        </scg:List>
+      </ui:FilterDataTable.SelectColumns>
+    </ui:FilterDataTable>
     <ui:OutputDataTable DataTable="[outputDT]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[testString3]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Test subtotal&quot;]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[testString3]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;subtotals&quot;]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Test subtotal output" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[testString3]" />
+    <ui:InsertDataTable AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" DataTable="[outputDT]" DisplayName="Insert" sap:VirtualizedContainerService.HintSize="810,114.666666666667" sap2010:WorkflowViewState.IdRef="InsertDataTable_1" ProviderName="System.Data.Odbc" TableName="shoppingexpense" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="810,128" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dt1]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From p In outputDT.Select()
+Group p By ID=p.Item(“ordernumber”).ToString Into Group
+Select Group(0)).ToArray.CopyToDataTable()]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dt1]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[dt1.DefaultView.ToTable(False,“ordernumber”)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:AddDataColumn x:TypeArguments="x:Double" Column="{x:Null}" DefaultValue="{x:Null}" AllowDBNull="True" AutoIncrement="False" ColumnName="total" DataTable="[dt1]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" MaxLength="100" Unique="False" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="810,128" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dt1]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From p In outputDT.Select()
+Group p By ID=p.Item(“ordernumber”).ToString Into Group
+Select Group(0)).ToArray.CopyToDataTable()]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[dt1]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[dt1.DefaultView.ToTable(False,“ordernumber”)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:AddDataColumn x:TypeArguments="x:Double" Column="{x:Null}" DefaultValue="{x:Null}" AllowDBNull="True" AutoIncrement="False" ColumnName="totalexpenses" DataTable="[dt1]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" MaxLength="100" Unique="False" />
+    <Assign sap:VirtualizedContainerService.HintSize="810,65.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[ListA]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[(From p In outputDT.Select()
+Group p By ID=p.Item(“ordernumber”).ToString Into GroupA=Group
+Select Convert.ToString(GroupA.Sum(Function(x) Convert.ToDouble(x.Item(“subtotal”).ToString)))).ToList()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dt1]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="810,306.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,154" sap2010:WorkflowViewState.IdRef="Sequence_25">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[row(“totalexpenses”)]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[ListA(dt1.Rows.IndexOf(row)).ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <ui:JoinDataTables DataTable1="[shoppinglistDT]" DataTable2="[dt1]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="JoinDataTables_3" JoinType="Inner" OutputDataTable="[dt2]">
+      <ui:JoinDataTables.Arguments>
+        <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
+          <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
+            <ui:JoinOperationArgument.Column1>
+              <InArgument x:TypeArguments="x:String">["ordernumber"]</InArgument>
+            </ui:JoinOperationArgument.Column1>
+            <ui:JoinOperationArgument.Column2>
+              <InArgument x:TypeArguments="x:String">["ordernumber"]</InArgument>
+            </ui:JoinOperationArgument.Column2>
+          </ui:JoinOperationArgument>
+        </scg:List>
+      </ui:JoinDataTables.Arguments>
+    </ui:JoinDataTables>
+    <ui:FilterDataTable DataTable="[dt2]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt2]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable.Filters>
+        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+        </scg:List>
+      </ui:FilterDataTable.Filters>
+      <ui:FilterDataTable.SelectColumns>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <InArgument x:TypeArguments="x:String">["ordernumber"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["clientID"]</InArgument>
+          <InArgument x:TypeArguments="x:String">["totalexpenses"]</InArgument>
+        </scg:List>
+      </ui:FilterDataTable.SelectColumns>
+    </ui:FilterDataTable>
+    <ui:RemoveDuplicateRows DataTable="[dt2]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[dt2]" />
+    <ui:OutputDataTable DataTable="[dt2]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="810,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_6" Text="[testString4]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Total Expenses" sap:VirtualizedContainerService.HintSize="810,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[testString4]" />
+    <ui:InsertDataTable AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" DataTable="[dt2]" DisplayName="Insert" sap:VirtualizedContainerService.HintSize="810,114.666666666667" sap2010:WorkflowViewState.IdRef="InsertDataTable_2" ProviderName="System.Data.Odbc" TableName="orders" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO" />
   </Sequence>
 </Activity>
