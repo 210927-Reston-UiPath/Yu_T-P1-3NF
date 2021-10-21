@@ -8,7 +8,8 @@ create table clients (
 create table shoppinglist (
     itemID serial,
     clientID int not null,
-    productName varchar(255) not null,
+    clientorder varchar(255) not null,
+    clientquantity int not null,
     primary key (itemID),
     foreign key(clientID) references clients(clientID)
 );
@@ -16,7 +17,7 @@ create table shoppinglist (
 create table orders (
     orderID serial,
     clientID int not null,
-    total DECIMAL(13, 2) not null,
+    totalexpenses DECIMAL(13, 2) not null,
     primary key (orderID),
     foreign key (clientID) references clients(clientID)
 );
@@ -25,8 +26,8 @@ create table shoppingexpense (
     lineitemID serial,
     orderID int not null,
     itemID int not null,
-    subtotal DECIMAL(13, 2) not null,
     price DECIMAL(13, 2) not null,
+    subtotal DECIMAL(13, 2) not null,
     primary key (lineitemID),
     foreign key (itemID) references shoppinglist(itemID),
     foreign key (orderID) references orders(orderID)
@@ -67,10 +68,15 @@ drop table shoppingexpense cascade;
 drop table vendors cascade;
 drop table vendorinventory cascade;
 
-select * from clients;
-select * from shoppinglist;
+delete from clients;
+delete from shoppinglist;
+
+
+
 select * from orders;
 select * from shoppingexpense;
+select * from clients;
+select * from shoppinglist;
 select * from vendors;
 select * from vendorinventory;
 
