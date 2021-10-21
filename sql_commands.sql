@@ -34,6 +34,12 @@ create table shoppingexpense (
     -- foreign key (orderID) references orders(orderID)
 );
 
+select orders.ordernumber,clients.clientname, shoppinglist.clientorder,shoppingexpense.price,shoppinglist.clientquantity,shoppingexpense.subtotal
+from orders
+inner join clients on orders.clientid = clients.clientid
+inner join shoppingexpense on shoppingexpense.ordernumber = orders.ordernumber
+inner join shoppinglist on shoppinglist.itemID = shoppingexpense.itemID;
+
 create table vendors (
     vendorID serial,
     vendorName varchar(255) unique,
@@ -48,6 +54,7 @@ create table vendorinventory (
 );
 
 
+
 Insert into vendors (vendorname)
 Values ('pega');
 Insert into vendors (vendorname)
@@ -57,10 +64,7 @@ Values ('foodshop');
 Insert into vendors (vendorname)
 Values ('beverageshop');
 
-select vendors.vendorID,vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost
-From vendors
-Inner join vendorinventory 
-On vendors.vendorName = vendorinventory.vendorName;
+
 
 drop table clients cascade;
 drop table shoppinglist cascade;
@@ -76,9 +80,21 @@ delete from shoppingexpense;
 
 
 select * from orders;
-select * from shoppingexpense;
 select * from clients;
+select * from shoppingexpense;
+
 select * from shoppinglist;
+
 select * from vendors;
 select * from vendorinventory;
 
+--view total expenses
+select orders.ordernumber, clients.clientName, orders.totalexpenses
+from orders
+inner join clients on orders.clientID = clients.clientID
+
+--view vendors
+select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost
+From vendors
+Inner join vendorinventory 
+On vendors.vendorName = vendorinventory.vendorName;
