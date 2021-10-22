@@ -102,7 +102,10 @@ select shoppinglist.ordernumber,clients.clientName,shoppinglist.clientorder
 from clients
 inner join shoppinglist on clients.clientid = shoppinglist.clientid
 
-
+--view items notfound 
+select notfound.ordernumber, clients.clientName, notfound.vendoritem
+from clients
+inner join notfound on clients.clientid = notfound.clientID
 
 drop table clients cascade;
 drop table shoppinglist cascade;
@@ -128,6 +131,9 @@ select * from clients;
 
 select * from vendors;
 select * from vendorinventory;
+
+select * from notFound;
+
 
 
 
