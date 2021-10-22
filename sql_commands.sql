@@ -54,6 +54,7 @@ create table vendorinventory (
     foreign key (vendorName) references vendors(vendorName)
 );
 
+-- required for table creation
 Insert into vendors (vendorname)
 Values ('pega');
 Insert into vendors (vendorname)
@@ -62,30 +63,7 @@ Insert into vendors (vendorname)
 Values ('foodshop');
 Insert into vendors (vendorname)
 Values ('beverageshop');
-
-drop table clients cascade;
-drop table shoppinglist cascade;
-drop table orders cascade;
-drop table shoppingexpense cascade;
-drop table vendors cascade;
-drop table vendorinventory cascade;
-drop table notFound;
-
-delete from clients cascade;
-delete from shoppinglist cascade;
-delete from shoppingexpense cascade;
-delete from orders cascade;
-
-
-select * from orders;
-select * from shoppingexpense;
-
-select * from shoppinglist;
-select * from clients;
-
-select * from vendors;
-select * from vendorinventory;
-
+--
 --view total expenses
 select orders.ordernumber, clients.clientName, orders.totalexpenses
 from orders
@@ -105,8 +83,39 @@ from orders
 inner join clients on orders.clientid = clients.clientid
 left join shoppinglist on orders.clientID = shoppinglist.clientID;
 
+-- view client info + client id
+select orders.ordernumber, orders.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
+from orders
+inner join clients on orders.clientid = clients.clientid
+left join shoppinglist on orders.clientID = shoppinglist.clientID;
+
 --view vendors
 select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost
 From vendors
 Inner join vendorinventory 
 On vendors.vendorName = vendorinventory.vendorName;
+
+
+drop table clients cascade;
+drop table shoppinglist cascade;
+drop table orders cascade;
+drop table shoppingexpense cascade;
+drop table vendors cascade;
+drop table vendorinventory cascade;
+drop table notFound;
+
+delete from clients cascade;
+delete from shoppinglist cascade;
+
+delete from shoppingexpense cascade;
+delete from orders cascade;
+
+select * from orders;
+select * from shoppingexpense;
+
+select * from shoppinglist;
+select * from clients;
+
+select * from vendors;
+select * from vendorinventory;
+
