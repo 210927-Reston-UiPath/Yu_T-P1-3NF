@@ -86,7 +86,7 @@ select shoppinglist.ordernumber,clients.clientName,clients.clientEmail,shoppingl
 from clients
 left join shoppinglist on clients.clientid = shoppinglist.clientid;
 
---view client info + client id redux 
+--view client info + client id  
 select shoppinglist.ordernumber,shoppinglist.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
 from clients
 left join shoppinglist on clients.clientid = shoppinglist.clientid
