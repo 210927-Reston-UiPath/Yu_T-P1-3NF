@@ -35,7 +35,6 @@ create table shoppingexpense (
     -- foreign key (orderID) references orders(orderID)
 );
 
-
 create table notFound (
     clientID int not null,
     ordernumber int not null,
@@ -65,6 +64,9 @@ Insert into vendors (vendorname)
 Values ('foodshop');
 Insert into vendors (vendorname)
 Values ('beverageshop');
+
+Insert into vendors (vendorname)
+Values ('testvendor');
 --
 --view total expenses
 select orders.ordernumber, clients.clientName, orders.totalexpenses
@@ -79,12 +81,12 @@ inner join shoppingexpense on shoppingexpense.ordernumber = orders.ordernumber
 inner join shoppinglist on shoppinglist.itemID = shoppingexpense.itemID
 order by ordernumber asc;
 
---view client info (done)
+--view client info 
 select shoppinglist.ordernumber,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
 from clients
 left join shoppinglist on clients.clientid = shoppinglist.clientid;
 
---view client info + client id redux (done)
+--view client info + client id redux 
 select shoppinglist.ordernumber,shoppinglist.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
 from clients
 left join shoppinglist on clients.clientid = shoppinglist.clientid
