@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DeleteClients" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="861.333333333333,510" sap2010:WorkflowViewState.IdRef="DeleteClients_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DeleteClients" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="862,510" sap2010:WorkflowViewState.IdRef="DeleteClients_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -50,6 +50,14 @@
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="DeleteClients" sap:VirtualizedContainerService.HintSize="376,405.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -63,11 +71,11 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="334,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.Odbc" Sql="create table clients (&#xD;&#xA;    clientID serial,&#xD;&#xA;    clientName varchar(255) not null,&#xD;&#xA;    clientEmail varchar(255) not null,&#xD;&#xA;    primary key (clientID)&#xD;&#xA;);&#xD;&#xA;&#xD;&#xA;create table shoppinglist (&#xD;&#xA;    itemID serial,&#xD;&#xA;    clientID int not null,&#xD;&#xA;    ordernumber int not null,&#xD;&#xA;    clientorder varchar(255) not null,&#xD;&#xA;    clientquantity int not null,&#xD;&#xA;    primary key (itemID),&#xD;&#xA;    foreign key(clientID) references clients(clientID)&#xD;&#xA;);" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="334,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.Odbc" Sql="create table clients (&#xA;    clientID serial,&#xA;    clientName varchar(255) not null,&#xA;    clientEmail varchar(255) not null,&#xA;    primary key (clientID)&#xA;);&#xA;&#xA;create table shoppinglist (&#xA;    itemID serial,&#xA;    clientID int not null,&#xA;    ordernumber int not null,&#xA;    clientorder varchar(255) not null,&#xA;    clientquantity int not null,&#xA;    primary key (itemID),&#xA;    foreign key(clientID) references clients(clientID)&#xA;);" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Orders deleted.&quot;]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Clients deleted.&quot;]" />
   </Sequence>
 </Activity>
