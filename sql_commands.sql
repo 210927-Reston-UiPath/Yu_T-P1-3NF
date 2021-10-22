@@ -71,7 +71,7 @@ select orders.ordernumber, clients.clientName, orders.totalexpenses
 from orders
 inner join clients on orders.clientID = clients.clientID
 
--- view subtotals
+-- view subtotals 
 select orders.ordernumber,clients.clientname, shoppinglist.clientorder,shoppingexpense.price,shoppinglist.clientquantity,shoppingexpense.subtotal
 from orders
 inner join clients on orders.clientid = clients.clientid
@@ -79,17 +79,15 @@ inner join shoppingexpense on shoppingexpense.ordernumber = orders.ordernumber
 inner join shoppinglist on shoppinglist.itemID = shoppingexpense.itemID
 order by ordernumber asc;
 
--- view client info
-select orders.ordernumber,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
-from orders
-inner join clients on orders.clientid = clients.clientid
-inner join shoppinglist on orders.clientID = shoppinglist.clientID;
+--view client info (done)
+select shoppinglist.ordernumber,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
+from clients
+left join shoppinglist on clients.clientid = shoppinglist.clientid;
 
--- view client info + client id
-select orders.ordernumber, orders.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
-from orders
-inner join clients on orders.clientid = clients.clientid
-inner join shoppinglist on orders.clientID = shoppinglist.clientID;
+--view client info + client id redux (done)
+select shoppinglist.ordernumber,shoppinglist.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
+from clients
+left join shoppinglist on clients.clientid = shoppinglist.clientid
 
 --view vendors
 select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost
@@ -106,9 +104,10 @@ inner join shoppinglist on clients.clientid = shoppinglist.clientid
 select notfound.ordernumber, clients.clientName, notfound.vendoritem
 from clients
 inner join notfound on clients.clientid = notfound.clientID
-
+--
 drop table clients cascade;
 drop table shoppinglist cascade;
+
 drop table notFound;
 
 drop table orders cascade;
@@ -116,13 +115,13 @@ drop table shoppingexpense cascade;
 
 drop table vendors cascade;
 drop table vendorinventory cascade;
-
+--
 delete from clients cascade;
 delete from shoppinglist cascade;
 
 delete from shoppingexpense cascade;
 delete from orders cascade;
-
+--
 select * from orders;
 select * from shoppingexpense;
 
