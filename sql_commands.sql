@@ -23,12 +23,6 @@ create table orders (
     -- foreign key (clientID) references clients(clientID)
 );
 
-create table notFound (
-    clientID int not null,
-    ordernumber int not null,
-    vendoritem varchar(255) not null,
-    foreign key(clientID) references clients(clientID)
-);
 
 create table shoppingexpense (
     lineitemID serial,
@@ -39,6 +33,14 @@ create table shoppingexpense (
     primary key (lineitemID),
     foreign key (itemID) references shoppinglist(itemID)
     -- foreign key (orderID) references orders(orderID)
+);
+
+
+create table notFound (
+    clientID int not null,
+    ordernumber int not null,
+    vendoritem varchar(255) not null,
+    foreign key(clientID) references clients(clientID)
 );
 
 create table vendors (
@@ -81,13 +83,13 @@ order by ordernumber asc;
 select orders.ordernumber,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
 from orders
 inner join clients on orders.clientid = clients.clientid
-left join shoppinglist on orders.clientID = shoppinglist.clientID;
+inner join shoppinglist on orders.clientID = shoppinglist.clientID;
 
 -- view client info + client id
 select orders.ordernumber, orders.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
 from orders
 inner join clients on orders.clientid = clients.clientid
-left join shoppinglist on orders.clientID = shoppinglist.clientID;
+inner join shoppinglist on orders.clientID = shoppinglist.clientID;
 
 --view vendors
 select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost
@@ -95,14 +97,22 @@ From vendors
 Inner join vendorinventory 
 On vendors.vendorName = vendorinventory.vendorName;
 
+--view client shopping list with order numbers for NotFound
+select shoppinglist.ordernumber,clients.clientName,shoppinglist.clientorder
+from clients
+inner join shoppinglist on clients.clientid = shoppinglist.clientid
+
+
 
 drop table clients cascade;
 drop table shoppinglist cascade;
+drop table notFound;
+
 drop table orders cascade;
 drop table shoppingexpense cascade;
+
 drop table vendors cascade;
 drop table vendorinventory cascade;
-drop table notFound;
 
 delete from clients cascade;
 delete from shoppinglist cascade;
@@ -118,4 +128,6 @@ select * from clients;
 
 select * from vendors;
 select * from vendorinventory;
+
+
 

@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>860,3458.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>861.333333333333,3458.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>NotFound_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -81,18 +81,21 @@
       <Variable x:TypeArguments="scg:List(x:String)" Name="clientItemList" />
       <Variable x:TypeArguments="x:String" Name="testString" />
       <Variable x:TypeArguments="x:String" Name="result" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="expensereportList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="notfoundList" />
+      <Variable x:TypeArguments="x:String" Name="itemList" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[viDT]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="796,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="System.Data.Odbc" Sql="select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost&#xD;&#xA;From vendors&#xD;&#xA;Inner join vendorinventory &#xD;&#xA;On vendors.vendorName = vendorinventory.vendorName;" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[viDT]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="796,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="System.Data.Odbc" Sql="select vendors.vendorName,vendorinventory.vendoritem,vendorinventory.vendorcost&#xA;From vendors&#xA;Inner join vendorinventory &#xA;On vendors.vendorName = vendorinventory.vendorName;" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[clientDT]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="796,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.Odbc" Sql="select orders.ordernumber, orders.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity&#xA;from orders&#xA;inner join clients on orders.clientid = clients.clientid&#xA;left join shoppinglist on orders.clientID = shoppinglist.clientID;" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[clientDT]" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="796,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" ProviderName="System.Data.Odbc" Sql="Select shoppinglist.ordernumber,clients.clientName,shoppinglist.clientorder&#xD;&#xA;From clients&#xD;&#xA;inner Join shoppinglist On clients.clientid = shoppinglist.clientid" ConnectionString="Dsn=testinstance2;uid=hklfzack;pwd=HYk3WqPpzJkKBBfkAVwmbqfv-SrWL2RO">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
