@@ -30,7 +30,10 @@ Website uses shutterstock for royalty-free stock images:
 - [x] The other vendor should be a self made shop using HTML, CSS, and JS
 ## Stretch Goals
 - [ ] Sending emails to clients about their shopping order
-- [ ] Any other extra features that would improve UX
+- [x] Any other extra features that would improve UX
+  - [x] Menu options:
+    - [x] Delete clients, orders, vendor inventory
+    - [x] View client info, totals, subtotals, items not found
 - [ ] Send client expense report in excel format
 ## Constraints
 - [x] Client information should be stored in a DB
