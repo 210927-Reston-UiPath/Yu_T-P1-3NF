@@ -107,16 +107,15 @@ select notfound.ordernumber, clients.clientName, notfound.vendoritem
 from clients
 inner join notfound on clients.clientid = notfound.clientID
 --
-drop table clients cascade;
-drop table shoppinglist cascade;
+drop table IF EXISTS shoppinglist cascade;
+drop table IF EXISTS clients cascade;
 
-drop table notFound;
+drop table IF EXISTS notFound;
+drop table IF EXISTS orders cascade;
+drop table IF EXISTS shoppingexpense cascade;
 
-drop table orders cascade;
-drop table shoppingexpense cascade;
-
-drop table vendors cascade;
-drop table vendorinventory cascade;
+drop table IF EXISTS vendors cascade;
+drop table IF EXISTS vendorinventory cascade;
 --
 delete from clients cascade;
 delete from shoppinglist cascade;
@@ -134,7 +133,7 @@ select * from vendors;
 select * from vendorinventory;
 
 select * from notFound;
-
+--
 
 
 
