@@ -1,5 +1,9 @@
 # Yu_T-P1-3NF
 
+This repository is a refactor of my original attempt at P1 that didn't meet the 3NF tables constraint:
+
+- https://github.com/210927-Reston-UiPath/Yu_T-P1
+
 ## Website 
 
 Website and website repository: 
@@ -40,9 +44,10 @@ Website uses shutterstock for royalty-free stock images:
 - [x] Client information should be stored in a DB
 - [x] Vendor information should be stored in a webpage
 - [x] Expense Reports should be stored in a DB
-- [ ] Automations should have exception handling enabled
+- [x] Automations should have exception handling enabled
   - [x] AddClient.xaml has exception handling for null values, numeric values, and for customers that don't have their own excel sheet with their name and their shopping list.
   - [x] EmailClient_EntireOrderOutOfStock.xaml handles an edge case to send out of stock emails to clients whose entire order was out of stock/unavailable. EmailClient does not handle this edge case by default.
+  - [x] View options check if datatable is null or has 0 rows when running view .xamls (empty query datatable check)
 - [x] DB tables should be 3NF
   - This repository is a refactor of my original attempt at P1 that didn't meet the 3NF tables constraint:
     - https://github.com/210927-Reston-UiPath/Yu_T-P1
