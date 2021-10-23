@@ -81,10 +81,14 @@ inner join shoppingexpense on shoppingexpense.ordernumber = orders.ordernumber
 inner join shoppinglist on shoppinglist.itemID = shoppingexpense.itemID
 order by ordernumber asc;
 
---view client info 
-select shoppinglist.ordernumber,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
+--view client orders
+select shoppinglist.ordernumber,clients.clientName,shoppinglist.clientorder, shoppinglist.clientquantity
 from clients
 left join shoppinglist on clients.clientid = shoppinglist.clientid;
+
+--view client name and email 
+select clients.clientid,clients.clientName,clients.clientEmail
+from clients;
 
 --view client info + client id  
 select shoppinglist.ordernumber,shoppinglist.clientID,clients.clientName,clients.clientEmail,shoppinglist.clientorder, shoppinglist.clientquantity
