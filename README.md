@@ -8,8 +8,8 @@ This repository is a refactor of my original attempt at P1 that didn't meet the 
 
 Website and website repository: 
 
-- https://210927-reston-uipath.github.io/Yu_T-P1-website/
-- https://github.com/210927-Reston-UiPath/Yu_T-P1-website/settings/pages
+- Website: https://210927-reston-uipath.github.io/Yu_T-P1-website/
+- Repository for website: https://github.com/210927-Reston-UiPath/Yu_T-P1-website/settings/pages
 
 Website uses Bootstrap for template and layout:
 
